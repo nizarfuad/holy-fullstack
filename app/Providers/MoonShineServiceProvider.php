@@ -13,6 +13,7 @@ use App\MoonShine\Resources\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\RankResource;
 use App\MoonShine\Resources\FeatureResource;
+use App\MoonShine\Resources\ShardResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserRoleResource::class,
                 RankResource::class,
                 FeatureResource::class,
+                ShardResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

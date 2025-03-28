@@ -4,37 +4,26 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources;
 
-use App\Models\Rank;
-use App\Models\Feature;
-
+use App\Models\Shard;
 use MoonShine\UI\Fields\ID;
-use MoonShine\UI\Fields\Json;
+
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Image;
 use MoonShine\UI\Fields\Number;
-use MoonShine\UI\Fields\Position;
-use MoonShine\UI\Fields\Switcher;
 use Illuminate\Database\Eloquent\Model;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Contracts\UI\FieldContract;
-use MoonShine\Support\DTOs\FileItemExtra;
-use MoonShine\UI\Components\ActionButton;
-use App\MoonShine\Resources\FeatureResource;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Laravel\Resources\ModelResource;
-use MoonShine\Laravel\Fields\Relationships\HasOne;
-use MoonShine\Laravel\Fields\Relationships\HasMany;
-use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 
 /**
- * @extends ModelResource<Rank>
+ * @extends ModelResource<Shard>
  */
-class RankResource extends ModelResource
+class ShardResource extends ModelResource
 {
-    protected string $model = Rank::class;
+    protected string $model = Shard::class;
 
-    protected string $title = 'Ranks';
-
+    protected string $title = 'Shards';
 
     /**
      * @return list<FieldContract>
@@ -42,13 +31,11 @@ class RankResource extends ModelResource
     protected function indexFields(): iterable
     {
         return [
-            // dd(HasMany::make('Features', 'value', resource: FeatureResource::class)),
             ID::make()->sortable(),
-            Text::make('Name', 'name'),
+            Text::make('Qty', 'qty'),
+            Text::make('Harga', 'harga'),
             Image::make('Image', 'image_url'),
-            HasMany::make('Features', 'feature')->modalMode(),
-            Text::make('Diskon (%)', 'diskon'),
-
+            Number::make('Diskon', 'diskon'),
         ];
     }
 
@@ -60,11 +47,10 @@ class RankResource extends ModelResource
         return [
             Box::make([
                 ID::make(),
-                Text::make('Name', 'name'),
-                Number::make('Harga', 'harga'),
-                Number::make('Diskon (%)', 'diskon'),
-                Image::make('Image', 'image_url')
-
+                Text::make('Qty', 'qty'),
+                Text::make('Harga', 'harga'),
+                Number::make('Diskon', 'diskon'),
+                Image::make('Image', 'image_url'),
             ])
         ];
     }
@@ -80,7 +66,7 @@ class RankResource extends ModelResource
     }
 
     /**
-     * @param Rank $item
+     * @param Shard $item
      *
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
@@ -89,9 +75,4 @@ class RankResource extends ModelResource
     {
         return [];
     }
-
-    // public function feature(): HasMany
-    // {
-    //     return HasMany::make('Feature', resource: FeatureResource::class)->get();
-    // }
 }
