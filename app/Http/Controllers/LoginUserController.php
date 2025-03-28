@@ -17,6 +17,11 @@ class LoginUserController extends Controller
     {
         $request->validate([
             'username' => 'required|exists:luckperms_players,username',
+
+
+        ], [
+            'username.exists' => 'Username tidak ditemukan!',
+
         ]);
 
         $player = LuckpermsPlayer::where('username', $request->username)->first();

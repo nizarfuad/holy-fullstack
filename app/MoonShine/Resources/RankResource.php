@@ -49,6 +49,9 @@ class RankResource extends ModelResource
             HasMany::make('Features', 'feature')->modalMode(),
             Text::make('Diskon (%)', 'diskon'),
 
+            Text::make('Display Name', 'display'),
+            Image::make('Image', 'image_url'),
+            HasMany::make('Features', 'feature')->modalMode(),
         ];
     }
 
@@ -76,6 +79,10 @@ class RankResource extends ModelResource
     {
         return [
             ID::make(),
+<<<<<<< HEAD
+=======
+            Json::make('Features', 'features')
+>>>>>>> e5e58a5 (Frontend project)
         ];
     }
 

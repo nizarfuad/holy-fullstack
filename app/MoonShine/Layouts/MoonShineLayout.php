@@ -40,6 +40,8 @@ use MoonShine\Laravel\Layouts\BaseLayout;
 use App\MoonShine\Resources\ShardResource;
 
 final class MoonShineLayout extends CompactLayout #AppLayout untuk lebih modern
+
+final class MoonShineLayout extends AppLayout #AppLayout untuk lebih modern
 {
     protected function assets(): array
     {
@@ -60,7 +62,10 @@ final class MoonShineLayout extends CompactLayout #AppLayout untuk lebih modern
                 ]),
                 MenuItem::make('Shards', ShardResource::class),
             ]),
-
+            MenuGroup::make('RANKS', [
+                MenuItem::make('Ranks', RankResource::class),
+                MenuItem::make('Features', FeatureResource::class),
+            ]),
         ];
     }
 

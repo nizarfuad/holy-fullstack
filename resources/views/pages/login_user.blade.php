@@ -7,7 +7,6 @@
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
             <div class="bg-white shadow-2xl rounded-xl p-8">
                 <h2 class="text-3xl font-bold text-center mb-6 text-sky-700">Login</h2>
-
                 <form action="{{ route('lp-authenticate') }}" method="POST">
                     @csrf
                     <div class="mb-4">
