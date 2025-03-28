@@ -37,8 +37,9 @@ use MoonShine\UI\Components\{Breadcrumbs,
 use App\MoonShine\Resources\RankResource;
 use App\MoonShine\Resources\FeatureResource;
 use MoonShine\Laravel\Layouts\BaseLayout;
+use App\MoonShine\Resources\ShardResource;
 
-final class MoonShineLayout extends AppLayout #AppLayout untuk lebih modern
+final class MoonShineLayout extends CompactLayout #AppLayout untuk lebih modern
 {
     protected function assets(): array
     {
@@ -52,10 +53,14 @@ final class MoonShineLayout extends AppLayout #AppLayout untuk lebih modern
         return [
             ...parent::menu(),
             MenuDivider::make('Website'),
-            MenuGroup::make('RANKS', [
-                MenuItem::make('Ranks', RankResource::class),
-                MenuItem::make('Features', FeatureResource::class),
+            MenuGroup::make('Donation', [
+                MenuGroup::make('Ranks', [
+                    MenuItem::make('Ranks', RankResource::class),
+                    MenuItem::make('Features', FeatureResource::class),
+                ]),
+                MenuItem::make('Shards', ShardResource::class),
             ]),
+
         ];
     }
 
