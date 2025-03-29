@@ -14,6 +14,8 @@ use App\MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\RankResource;
 use App\MoonShine\Resources\FeatureResource;
 use App\MoonShine\Resources\ShardResource;
+use App\MoonShine\Resources\PlayerResource;
+use App\MoonShine\Resources\SkybPlayerResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 RankResource::class,
                 FeatureResource::class,
                 ShardResource::class,
+                PlayerResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

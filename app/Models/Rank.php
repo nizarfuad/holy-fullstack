@@ -14,11 +14,7 @@ class Rank extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-<<<<<<< HEAD
     protected $fillable = ['name', 'harga', 'image_url', 'diskon'];
-=======
-    protected $fillable = ['name', 'display', 'harga', 'image_url', 'diskon'];
->>>>>>> e5e58a5 (Frontend project)
     protected $appends = ['final_price', 'features'];
 
     public function feature(): HasMany
