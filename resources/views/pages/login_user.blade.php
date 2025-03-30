@@ -7,6 +7,12 @@
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
             <div class="bg-white shadow-2xl rounded-xl p-8">
                 <h2 class="text-3xl font-bold text-center mb-6 text-sky-700">Login</h2>
+                @if ($errors->has('username'))
+                    <div class="bg-red-500 text-white text-center p-2 rounded mb-4">
+                        {{ $errors->first('username') }}
+                        <p class="text-sm mt-1">Pastikan kamu sudah pernah login di server.</p>
+                    </div>
+                @endif
                 <form action="{{ route('lp-authenticate') }}" method="POST">
                     @csrf
                     <div class="mb-4">
